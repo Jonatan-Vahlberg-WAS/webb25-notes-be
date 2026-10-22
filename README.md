@@ -9,15 +9,15 @@ open http://localhost:3000
 
 # Instructions
 
-[x] - Create DB models
-[x] - Skapa types (hämta från databasen)
-[ ] - Skapa authentifcation 
-    [ ] - (Register med email, password, name)
-    [ ] - (Login email, password)
-[ ] - Skapa middleware
-[ ] - Skapa och activera RLS och policies
-[ ] - Skapa router
-[ ] - Skapa validering?
+- [x] Create DB models
+- [x] Skapa types (hämta från databasen)
+- [ ] Skapa authentifcation 
+    - [ ] (Register med email, password, name)
+    - [ ] (Login email, password)
+- [ ] Skapa middleware
+- [ ] Skapa och activera RLS och policies
+- [ ] Skapa router
+- [ ] Skapa validering?
 
 
 ```
