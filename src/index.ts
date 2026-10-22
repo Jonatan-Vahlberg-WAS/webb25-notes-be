@@ -2,6 +2,7 @@ import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
 import tags from './routes/tags.js'
 import auth from './routes/auth.js'
+import notes from './routes/notes.js'
 import { optionalAuth } from './middleware/auth.js'
 
 const app = new Hono()
@@ -14,6 +15,7 @@ app.get('/', (c) => {
 
 app.route('/auth', auth)
 app.route('/tags', tags)
+app.route('/notes', notes)
 
 serve({
   fetch: app.fetch,

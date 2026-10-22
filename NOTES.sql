@@ -39,15 +39,15 @@ insert into tags (slug, name) values
     ('other', 'Other');
 
 insert into notes (owner_id, title, content) values
-    (1, 'Personal Note', 'This is a personal note'),
-    (1, 'Work Note', 'This is a work note'),
-    (1, 'Family Note', 'This is a family note'),
-    (1, 'Friends Note', 'This is a friends note'),
-    (1, 'Other Note', 'This is a other note');
+    ('d74d85cf-cb95-4f68-8675-4c4e6082e26a', 'Personal Note', 'This is a personal note'),
+    ('d74d85cf-cb95-4f68-8675-4c4e6082e26a', 'Work Note', 'This is a work note'),
+    ('d74d85cf-cb95-4f68-8675-4c4e6082e26a', 'Family Note', 'This is a family note'),
+    ('d74d85cf-cb95-4f68-8675-4c4e6082e26a', 'Friends Note', 'This is a friends note'),
+    ('d74d85cf-cb95-4f68-8675-4c4e6082e26a', 'Other Note', 'This is a other note');
 
-insert into note_tags (note_id, tag_id) values
-    (1, 1),
-    (1, 2),
-    (1, 3),
-    (1, 4),
-    (1, 5);
+insert into note_tags (note_id, tag_slug) values
+    (1, 'personal'),
+    (1, 'work'),
+    (1, 'family'),
+    (1, 'friends'),
+    (1, 'other');

@@ -16,8 +16,16 @@ open http://localhost:3000
     - [x] (Login email, password)
 - [x] Skapa middleware
 - [ ] Skapa och activera RLS och policies
+    - [x] Tags
+    - [x] Notes
+    - [x] NoteTags
 - [x] Add cascade to FKs
 - [ ] Skapa router
+    - [ ] GET notes
+    - [ ] GET note
+    - [ ] POST note
+    - [ ] PUT note
+    - [ ] DELETE note
 - [ ] Skapa validering?
 
 
