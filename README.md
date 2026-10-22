@@ -16,6 +16,7 @@ open http://localhost:3000
     - [x] (Login email, password)
 - [x] Skapa middleware
 - [ ] Skapa och activera RLS och policies
+- [x] Add cascade to FKs
 - [ ] Skapa router
 - [ ] Skapa validering?
 

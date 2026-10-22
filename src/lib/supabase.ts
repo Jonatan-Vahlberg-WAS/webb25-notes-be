@@ -12,8 +12,6 @@ if (!url || !key) {
   throw new Error('Missing SUPABASE_URL or a Supabase key')
 }
 
-export const supabase = createClient<Database>(url, key)
-
 export function createSupabaseForRequest(c: Context) {
   return createServerClient<Database>(url!, key!, {
     cookies: {

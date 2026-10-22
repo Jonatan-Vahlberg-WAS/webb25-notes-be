@@ -1,7 +1,7 @@
 import { Hono } from 'hono'
 import { zValidator } from '@hono/zod-validator'
 import { z } from 'zod'
-import { supabase } from '../lib/supabase.js'
+import { requireAuth } from '../middleware/auth.js'
 
 const tags = new Hono()
 
@@ -17,7 +17,8 @@ const updateTagSchema = z.object({
 })
 
 tags.get('/', async (c) => {
-  const { data, error } = await supabase
+  const sb = c.get("supabase")
+  const { data, error } = await sb
     .from('tags')
     .select('slug, name, created_at')
     .order('name')
@@ -28,7 +29,8 @@ tags.get('/', async (c) => {
 
 tags.get('/:slug', async (c) => {
   const slug = c.req.param('slug')
-  const { data, error } = await supabase
+  const sb = c.get("supabase")
+  const { data, error } = await sb
     .from('tags')
     .select('slug, name, created_at')
     .eq('slug', slug)
@@ -39,9 +41,10 @@ tags.get('/:slug', async (c) => {
   return c.json(data)
 })
 
-tags.post('/', zValidator('json', createTagSchema), async (c) => {
+tags.post('/', requireAuth,  zValidator('json', createTagSchema), async (c) => {
   const body = c.req.valid('json')
-  const { data, error } = await supabase
+  const sb = c.get("supabase")
+  const { data, error } = await sb
     .from('tags')
     .insert(body)
     .select('slug, name, created_at')
@@ -52,10 +55,11 @@ tags.post('/', zValidator('json', createTagSchema), async (c) => {
   return c.json(data, 201)
 })
 
-tags.patch('/:slug', zValidator('json', updateTagSchema), async (c) => {
+tags.patch('/:slug', requireAuth, zValidator('json', updateTagSchema), async (c) => {
   const slug = c.req.param('slug')
   const { name } = c.req.valid('json')
-  const { data, error } = await supabase
+  const sb = c.get("supabase")
+  const { data, error } = await sb
     .from('tags')
     .update({ name })
     .eq('slug', slug)
@@ -67,9 +71,10 @@ tags.patch('/:slug', zValidator('json', updateTagSchema), async (c) => {
   return c.json(data)
 })
 
-tags.delete('/:slug', async (c) => {
+tags.delete('/:slug', requireAuth,  async (c) => {
   const slug = c.req.param('slug')
-  const { data, error } = await supabase
+  const sb = c.get("supabase")
+  const { data, error } = await sb
     .from('tags')
     .delete()
     .eq('slug', slug)
