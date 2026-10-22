@@ -1,13 +1,18 @@
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
 import tags from './routes/tags.js'
+import auth from './routes/auth.js'
+import { optionalAuth } from './middleware/auth.js'
 
 const app = new Hono()
+
+app.use("*", optionalAuth)
 
 app.get('/', (c) => {
   return c.text('Hello Hono!')
 })
 
+app.route('/auth', auth)
 app.route('/tags', tags)
 
 serve({
