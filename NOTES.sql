@@ -1,7 +1,7 @@
 
 create table notes (
     id serial primary key,
-    owner_id int not null REFERENCES auth.users(id),
+    owner_id uuid not null REFERENCES auth.users(id),
     title text not null,
     content text not null,
     created_at timestamp not null default now()
@@ -10,7 +10,7 @@ create table notes (
 create table note_tags (
     id serial primary key,
     note_id int not null REFERENCES notes(id),
-    tag_id int not null REFERENCES tags(id),
+    tag_slug text not null REFERENCES tags(slug),
     created_at timestamp not null default now()
 );
 
